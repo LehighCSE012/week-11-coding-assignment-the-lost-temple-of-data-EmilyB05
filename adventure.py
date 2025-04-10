@@ -16,9 +16,9 @@ def load_artifact_data(excel_filepath):
     """
     # Hint: Use pd.read_excel, specify sheet_name and skiprows
     # Replace 'pass' with your code
-    excel_filepath = pd.read_excel(excel_file, sheet_name = "Main Chamber", skiprows = 3)
+    df = pd.read_excel(excel_filepath, sheet_name = "Main Chamber", skiprows = 3)
     # return the resulting DataFrame
-    return excel_filepath
+    return df
 
 def load_location_notes(tsv_filepath):
     """
@@ -32,9 +32,9 @@ def load_location_notes(tsv_filepath):
     """
     # Hint: Use pd.read_csv, specify the separator for tabs ('\t')
     # Replace 'pass' with your code
-    tsv_filepath = pd.read_csv(tsv_file, sep = '\t')
+    df = pd.read_csv(tsv_filepath, sep = '\t')
     # return the resulting DataFrame
-    return tsv_filepath
+    return df
 
 def extract_journal_dates(journal_text):
     """
@@ -50,8 +50,10 @@ def extract_journal_dates(journal_text):
     # Pattern idea: r"\d{2}/\d{2}/\d{4}"
     # Replace 'pass' with your code
     pattern = r"(0[1-9]|1[0-2])/\d{2}/\d{4}"
-    list = re.findall(pattern, journal_text)
-    return list
+    date_list = re.findall(pattern, journal_text)
+    if len(date_list) == 0:
+        return []
+    return date_list
 
 def extract_secret_codes(journal_text):
     """
@@ -67,9 +69,10 @@ def extract_secret_codes(journal_text):
     # Pattern idea: r"AZMAR-\d{3}"
     # Replace 'pass' with your code
     pattern = r"AZMAR-\d{3}"
-    list = re.findall(pattern, journal_text)
-    # return the list of found codes
-    return list
+    code_list = re.findall(pattern, journal_text)
+    if len(code_list) == 0:
+        return []
+    return code_list
 
 # --- Optional: Main execution block for your own testing ---
 if __name__ == '__main__':
