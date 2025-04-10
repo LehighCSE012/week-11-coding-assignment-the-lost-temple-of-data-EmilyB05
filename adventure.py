@@ -49,7 +49,7 @@ def extract_journal_dates(journal_text):
     # Hint: Use re.findall with a raw string pattern for MM/DD/YYYY format.
     # Pattern idea: r"\d{2}/\d{2}/\d{4}"
     # Replace 'pass' with your code
-    pattern = r"\d{2}/\d{2}/\d{4}"
+    pattern = r"(0[1-9]|1[0-2])/\d{2}/\d{4}"
     list = re.findall(pattern, journal_text)
     return list
 
