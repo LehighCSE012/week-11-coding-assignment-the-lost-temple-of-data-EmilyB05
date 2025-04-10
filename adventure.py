@@ -1,7 +1,7 @@
 """Emily Byrnes, week 11 coding assignment"""
 
-import pandas as pd
 import re
+import pandas as pd
 
 def load_artifact_data(excel_filepath):
     """
